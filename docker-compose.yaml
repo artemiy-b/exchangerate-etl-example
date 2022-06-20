@@ -274,5 +274,18 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5433'
+    volumes: 
+      - db:/var/lib/postgresql/data
+
 volumes:
   postgres-db-volume:
+  db:
+    driver: local
