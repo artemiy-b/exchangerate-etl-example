@@ -70,6 +70,8 @@ x-airflow-common:
       condition: service_healthy
     postgres:
       condition: service_healthy
+    db:
+      condition: service_healthy
 
 services:
   postgres:
@@ -281,9 +283,15 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5432:5433'
+      - 5433:5432
     volumes: 
       - db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      retries: 5
+    restart: always
 
 volumes:
   postgres-db-volume:
