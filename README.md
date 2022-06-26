@@ -3,7 +3,7 @@
 ```bash
 docker-compose up airflow-init
 
-docker-compose up
+docker-compose up -d
 
 docker-compose run airflow-cli airflow variables set pg_ip $(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf "name=exchangerate-etl-example_db_1"))
 
