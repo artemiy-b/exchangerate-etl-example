@@ -1,6 +1,6 @@
 # exchangerate-etl-example
 
-Для запуска выполнить следующие команды
+Для запуска выполнить следующие команды:
 ```bash
 docker-compose up airflow-init
 ```
@@ -14,8 +14,7 @@ docker-compose run airflow-cli airflow variables set pg_ip $(docker inspect -f '
 docker-compose run airflow-cli airflow dags unpause exchange_rate
 ```
 
-Для остановки и удаления образов
-
+Для остановки и удаления образов выполнить команду:
 ```bash
 docker-compose down --volumes --rmi all
 ```
