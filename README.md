@@ -14,6 +14,13 @@ docker-compose run airflow-cli airflow variables set pg_ip $(docker inspect -f '
 docker-compose run airflow-cli airflow dags unpause exchange_rate
 ```
 
+DAG называется exchange_rate. Проверить успешность выполнения можно по наличию записи 'Run successfully' в логе.
+
+Данные можно посмотреть в таблице rates запросом:
+```sql
+select * from rates
+```
+
 Для остановки и удаления образов выполнить команду:
 ```bash
 docker-compose down --volumes --rmi all
