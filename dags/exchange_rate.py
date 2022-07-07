@@ -28,7 +28,7 @@ def api_call():
     
 
 with DAG(
-    'best_dag_ever',
+    'exchange_rate',
     # These args will get passed on to each operator
     # You can override them on a per-task basis during operator initialization
     default_args={
